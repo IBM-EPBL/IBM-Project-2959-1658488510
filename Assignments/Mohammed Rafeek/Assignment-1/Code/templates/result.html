@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <center>
+  <br><br>
+  <form action="{{ url_for('result') }}" method="post">
+  <table>
+   <tr>
+     <h4>Name : {{ name }}<br></h4>
+   </tr>
+   <tr>
+     <h4>Email : {{ email }}<br></h4>
+   </tr>
+  <tr>
+    <h4>Mobile : {{ mobile }}<br></h4>
+   </tr>
+    </table><br><br>
+  </form>
+</center>
+
+    <style type="text/css">
+
+      table{
+        font-size: 24px;
+        border-collapse: separate;
+        border-spacing: 12px;
+      }
+    </style>
+</body>
+</html>
