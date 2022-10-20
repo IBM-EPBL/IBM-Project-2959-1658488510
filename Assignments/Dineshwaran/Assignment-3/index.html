@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/style.css">
+	<title>Assignment-3</title>
+	<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "664bde70-7c21-4043-acbd-55f081237e79", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "7ff9ba1e-d217-47ad-863e-aec4dfc14bba", // The ID of your service instance.
+    onLoad: function(instance) { instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+</head>
+<body>
+	<center>
+		<h4>Displaying Images from Object Storage</h4>
+	</center>
+	<table>
+		<tr>
+			<td>
+				<img src="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/Flower1.jpg">
+			</td>
+			<td>
+				<img src="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/Flower2.jpg">
+			</td>
+			<td>
+				<img src="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/Flower3.jpg">
+			</td>
+			<td>
+				<img src="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/Flower4.jpg">
+			</td>
+		</tr>
+	</table>
+				<img src="http://s3.jp-tok.cloud-object-storage.appdomain.cloud/example-storage/Flower5.jpg"><Br><br><br>
+
+	<div class="mention">
+		<center>
+			<h4>Type "hi" and Press Enter to use chatbot</h4>
+		</center>
+	</div>
+	
+	
+</body>
+</html>
+
