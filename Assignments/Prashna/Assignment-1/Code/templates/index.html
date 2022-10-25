@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up</title>
+</head>
+<body>
+  <center>
+  <br><br><br><br><br><br><br><br><br>
+  <h3>Sign Up</h3><br>
+  <form action="{{ url_for('result') }}" method="post">
+  <table>
+    <tr>
+        <td>
+        <label>Name</label>
+      </td>
+      <td>
+         <input type="text" class="name-input name mb-3" id="name" name="name">  
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Email</label>
+      </td>
+      <td>
+         <input type="email" class="name-input name mb-3" id="email" name="email">  
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Mobile</label>
+      </td>
+      <td>
+           <input type="number" class="name-input name mb-3" id="mobile" name="mobile">  
+      </td>
+    </tr>
+    </table><br><br>
+    <input class="btn btn-outline-primary" type="submit" value="Register">
+  </form>
+</center>
+
+    <style type="text/css">
+      body{
+        background-color:sandybrown;
+      }
+      
+      
+    </style>
+</body>
+</html>
