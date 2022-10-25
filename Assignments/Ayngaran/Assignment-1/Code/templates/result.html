@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile</title>
+</head>
+<body>
+  <center>
+  <br><br>
+  <h1>Welcome!!!</h1><br>
+  <form action="{{ url_for('result') }}" method="post">
+  <table>
+   <tr>
+     <h3>Name : {{ name }}<br></h3>
+   </tr>
+   <tr>
+     <h3>Email : {{ email }}<br></h3>
+   </tr>
+  <tr>
+    <h3>Mobile : {{ mobile }}<br></h3>
+   </tr>
+    </table><br><br>
+  </form>
+</center>
+
+    <style type="text/css">
+      body{
+        background-color: orange;
+      }
+      table{
+        font-size: 24px;
+        border-collapse: separate;
+        border-spacing: 12px;
+      }
+    </style>
+</body>
+</html>
