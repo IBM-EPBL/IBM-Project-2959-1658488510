@@ -6,7 +6,7 @@ from functools import partial,wraps
 conn = ibm_db.connect("DATABASE=;HOSTNAME=;PORT=32733;SECURITY=;SSLServerCertificate=;PROTOCOL=TCPIP;UID=;PWD=",'','')
 
 app = Flask(__name__) 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = ''
 PEOPLE_FOLDER = os.path.join('static', 'people_photo')
 
 #IN THIS FILE ONLY SPRINT-2 ACTIONS ARE AVAILABLE
