@@ -1,0 +1,74 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/style/template.css">
+     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
+    <title>Jobby</title>
+    <link rel="shortcut icon" href="../static/images/j.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div>
+        
+        <nav>
+            <img src="{{url_for('static',filename = 'images/logo.jpg')}}">
+            <ul name="menu" id="menu">
+                <li><a href="/home">Home</a></li>
+                <li>
+                {% if session['active']=="jobseeker" %}
+                <a href="/browse">Browse Job</a>
+
+                {% elif session['active']=="recruiter" %}
+                <a href="/jobpost">Post Job</a>
+                {% else %}
+                <a href="/browse">Browse Job</a>
+                {% endif %}
+               </li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            <ul name="action" id="action">
+                <li>
+                {% if 'loggedin' in session %}
+                    {% if session['active']=="jobseeker"%}
+                        <a href="/user_dashboard">{{session['id']}}</a>
+                        <a href="/logout" style="color:red;">LOGOUT</a>
+                    {% elif session['active']=="recruiter"%}
+                        <a href="/org_dashboard">{{session['id']}}</a>
+                        <a href="/logout" style="color:red;">LOGOUT</a>
+
+                    {% else %}
+                    <a href=""></a>
+
+                    {%endif%}
+                {%else%}
+                <a href="login" style="font-size: 26px;"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                {% endif %}
+                </li>
+            </ul>
+        </nav>
+
+
+        <div>
+            {% block body %}{% endblock %}
+            </div>
+    </div>
+
+</html>
+
+<script>
+window.watsonAssistantChatOptions = {
+integrationID: "e4f603bd-cdcf-4b41-bcca-003a3ab1f57c", // The ID of this integration.
+region: "us-south", // The region your integration is hosted in.
+serviceInstanceID: "a150f6eb-5fbd-449b-b39e-0b8420682afd", // The ID of your service 
+instance.
+onLoad: function(instance) { instance.render(); }
+};
+setTimeout(function(){
+const t=document.createElement('script');
+t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + 
+(window.watsonAssistantChatOptions.clientVersion || 'latest') + 
+"/WatsonAssistantChatEntry.js";
+document.head.appendChild(t);
+});
+</script>

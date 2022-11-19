@@ -1,0 +1,366 @@
+{% extends "template.html" %} {% block body %}
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../static/images/j.png" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+
+	<title></title>
+</head>
+
+ <br><br> <br><br> <br><br> <br><br>
+	<h4>Dashboard</h4>
+ <br><br> <br><br> <br><br> <br><br>
+		<div class="bar">
+		    <ul>
+		    	<li><i class="fa fa-users" aria-hidden="true" id="svglogo" onclick="orgdetFun()"> Org Details</i></li>
+		    	<li><i class="fa fa-address-card"  aria-hidden="true" id="svglogo" onclick="extraDetFun2()"> Extra Details</i></li>
+		    	<li><i class="fa fa-check-circle-o"  aria-hidden="true" id="svglogo" onclick="appliedcandFun()"> Applied Candidates</i></li>
+		    	<li><i class="fa fa-check-circle-o"  aria-hidden="true" id="svglogo" onclick="reviewFun()">Review Candidates </i></li>
+		    	<li><i class="fa fa-sign-out" aria-hidden="true" id="svglogo" onclick="subcripFun4()"><a href="logout"id="navli"> Logout</a></i></li>
+
+		    </ul>	
+		</div>
+<br><br><br><br><br><br><br><br><br><br>
+		<div id="orgdet">
+			<br><br>
+			<table>
+				<tr>
+					<td>
+						<label>Organization Name</label><br>
+						<input type="text" value="{{orgname}}" width="800px" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Email</label><br>
+						<input type="email" value="{{email}}" readonly>
+					</td>
+					<td>
+						<label>Owner Name</label><br>
+						<input type="text" value="{{ownername}}" readonly>
+					</td>
+					<td>
+						<label>Date of Eastablishment</label><br>
+						<input type="text" value="{{doe}}" readonly>
+					</td>
+				</tr>
+				<tr style="margin-top:100px;">
+					<td>
+						<label>Country</label><br>
+						<input type="text" value="{{country}}" readonly>
+					</td>
+					<td>
+						<label>Country Code</label><br>
+						<input type="number" value="{{country_code}}" readonly>
+					</td>
+					<td>
+						<label>Phone No</label><br>
+						<input type="number" value="{{phone}}" readonly>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Address Line 1</label><br>
+						<input type="text" value="{{drno}}" readonly>
+					</td>
+					<td>
+						<label>Address line 2</label><br>
+						<input type="text" value="{{landmark1}}" readonly>
+					</td>
+					<td>
+						<label>Address line 3</label><br>
+						<input type="text" value="{{landmark2}}" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Village</label><br>
+						<input type="text" value="{{village}}" readonly>
+					</td>
+					<td>
+						<label>District</label><br>
+						<input type="text" value="{{district}}" readonly>
+					</td>
+					<td>
+						<label>Pincode</label><br>
+						<input type="number" value="{{pincode}}" readonly>
+					</td>
+				</tr>
+
+
+			</table>
+		</div> 
+
+
+
+		<div id="extra">
+			<h5>Domains<h5>
+			{{domain}}
+
+			<br><br><br>
+			<table>
+				<tr>
+					<th>Content</th>
+					<th>Your Answer</th> 
+				<tr>
+				<tr>
+					<td>Whether the Company is MNC?</td>
+					<td>{{q1}}</td>
+				</tr>
+				<tr>
+					<td>Have any top positions in your sector?</td>
+					<td>{{q2}}</td>
+				</tr>
+				<tr>
+					<td>Will have any salary hikes?</td>
+					<td>{{q3}}</td>
+				</tr>
+			</table>
+			<br><Br><br>
+	    </div>
+
+	    <div id="apply">
+			<table>
+				<tr style="height: 60px; background-color: #04aec4; color: white;">
+					<td>
+						CANDIDATE_ID
+					</td>
+					<td>
+						JOB_ID
+					</td>
+					<td>
+						ACTION
+					</td>
+				</tr>
+			{% for i in result%}
+            <tr>
+            <form name="form" action="/candidate_info" method="POST" onsubmit="required()">
+            <td><input type="text" name="candid" value="{{i['CANDIDATE_ID']}}" readonly></td>
+            <td>{{i['JOB_ID']}}</td>
+            <td><button id="btnorg" type="submit" name="submit" value="submit">View Profile</button></td>
+            </form>
+			</tr>
+			{% endfor %}
+			</table>
+	    </div>
+
+	    <div id="review">
+	    	<table style="margin-left:120px; margin-top:0px; margin-bottom: 300px;">
+	    		<H3 style="margin-left: 400px; margin-top:-400px">Review Candidates</H3><br><Br><Br>
+	    		<form method="POST" action="/review" name="form">
+	    		<tr>
+	    			<td>
+	    				<input type="text" name="cand_id">
+	    			</td>
+	    			<td>
+	    				<input type="text" name="review">
+	    			</td>
+	    			<td>
+	    				<input type="text" name="comment">
+	    			</td>
+	    			<td>
+	    				<button type="submit" value="button" name="submit">Submit</button>
+	    			</td>
+	    		</tr>
+	    		</form>
+	    	</table>
+	    </div>
+<footer>
+        <center>
+            Copyright @ Jobby 2022
+        </center>
+    </footer>
+</body>
+
+<style type="text/css">
+	#orgdet{
+		margin-left:160px;
+	}
+	 #extra{
+	 	margin-left: 200px;
+	 }
+	#extra ul li{
+		float:left;
+		margin-right:175px;
+		list-style-type: none;
+	}
+	#extra ul li{
+		list-style-type: none;
+		padding-bottom: 20px;
+	}
+	#apply{
+		margin-top: -500px;
+		margin-left: 400px;
+		padding-bottom:500px;
+	}
+	#apply table{
+		box-shadow: 0px 2px 0px rgb(122, 230, 240);
+	}
+	h4{
+		margin-top: -100px;
+		margin-bottom: 10px;
+		padding: 10px;
+		color: black;
+		position: fixed;
+
+	}
+	.bar ul{
+		position: fixed;
+		overflow: hidden;
+		float: left;
+		width: 200px;
+		list-style-type: none;
+		margin-left: -12px;
+		background-color:#04aec4;
+		padding-bottom:480px;
+		margin-top:-200px;
+	}
+	#jobpost table tr td textarea{
+		height: 400px;
+		width: 400px;
+	}
+    .bar ul li{
+    	font-family:monospace;
+    	cursor: pointer;
+    	color: white;
+    	font-size: 18px;
+    	margin-left: -12px;
+    	padding-top: 30px;
+    	padding-right: 12px;
+    }
+    #orgdet{
+    	margin-top: -375px;
+    }
+    #extra{
+    	margin-top: -200px;
+    }
+    #navli{
+    	text-decoration: none;
+    	color: white;
+    }
+    #orgdet input{
+		padding-top: 10px;
+		border: none;
+		outline: none;
+		color: black;
+		width: 300px;
+        border-radius: 6px 6px 0 0;
+        background-color: whitesmoke;
+		border-bottom-style: solid;
+		border-width: 1px;
+		cursor: not-allowed;
+	}
+	input{
+		padding-top: 10px;
+		border: none;
+		outline: none;
+		color: black;
+		width: 300px;
+        border-radius: 6px 6px 0 0;
+        background-color: whitesmoke;
+		border-bottom-style: solid;
+		border-width: 1px;
+	}
+   footer{
+   	position: static;
+   }
+#apply table tr td{
+	text-align: center;
+}
+#apply table tr td input{
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+</style>
+
+
+<script type="text/javascript">
+var orgdet = document.getElementById("orgdet");
+var extra = document.getElementById("extra");
+var jobpost=document.getElementById("jobpost");
+var apply=document.getElementById("apply");
+var review=document.getElementById("review");
+
+orgdet.style.display = "";
+extra.style.display="none";
+apply.style.display="none";
+review.style.display="none";
+jobpost.style.display="none";
+
+
+
+function orgdetFun(){
+orgdet.style.display = "";
+extra.style.display="none";
+apply.style.display="none";
+review.style.display="none";
+jobpost.style.display="none";
+
+
+
+}
+function extraDetFun2(){
+	orgdet.style.display = "none";
+	extra.style.display="";
+	apply.style.display="none";
+	review.style.display="none";
+ jobpost.style.display="none";
+
+
+}
+function postFun(){
+	orgdet.style.display = "none";
+extra.style.display="none";
+apply.style.display="none";
+review.style.display="none";
+jobpost.style.display="";
+
+
+
+}
+function appliedcandFun(){
+orgdet.style.display = "none";
+extra.style.display="none";
+apply.style.display="";
+review.style.display="none";
+jobpost.style.display="none";
+
+
+
+}
+function reviewFun(){
+	orgdet.style.display = "none";
+extra.style.display="none";
+apply.style.display="none";
+review.style.display=""
+jobpost.style.display="none";
+
+
+}
+
+</script>
+
+<style type="text/css">
+	table{
+		margin-top: -100px;
+		margin-left:20px;
+		border-collapse: separate;
+		border-spacing: 0 50px;
+	}
+	table tr td{
+		padding-left:100px;
+	}
+	nav{
+		position: fixed;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock %}
