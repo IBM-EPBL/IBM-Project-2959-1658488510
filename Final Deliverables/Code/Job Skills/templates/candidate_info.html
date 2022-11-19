@@ -1,0 +1,280 @@
+{% extends "template.html" %} 
+{% block body %}
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../static/images/j.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<title></title>
+</head>
+
+	<div class="bar"><br><br><br><Br><br>
+	<h4>Dashboard</h4>
+	<br>
+		    <ul>
+		    	<li onclick="persondetFun2()"><i class="fa fa-user"  > </i> Personal Details</li>
+		    	<li onclick="educateFun2()"><i class="fa fa-university"></i> Educational Details</li>
+		    	<li onclick="extraFun3()"><i class="fa fa-address-card"  ></i> Extra Info</li>
+		    </ul>	
+		</div>
+<br><br><br><br>
+		<div id="persondet2">
+			<br><br>
+			<table>
+				<tr>
+					<td>
+						<label>Email</label><br>
+						{{email}}
+					</td>
+					<td>
+						<label>Name</label><br>
+						<input type="text" value="{{name}}" readonly>
+					</td>
+					<td>
+						<label>Country</label><br>
+						<input type="text" value="{{country}}" readonly>
+					</td>
+				</tr>
+				<tr style="margin-top:100px;">
+					<td>
+						<label>Country_Code</label><br>
+						<input type="text" value="{{country_code}}" readonly>
+					</td>
+					<td>
+						<label>Phone No</label><br>
+						<input type="number" value="{{phone}}" readonly>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Address Line 1</label><br>
+						<input type="text" value="{{drno}}" readonly>
+					</td>
+					<td>
+						<label>Address line 2</label><br>
+						<input type="text" value="{{landmark1}}" readonly>
+					</td>
+					<td>
+						<label>Address line 3</label><br>
+						<input type="text" value="{{landmark2}}" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Village</label><br>
+						<input type="text" value="{{village}}" readonly>
+					</td>
+					<td>
+						<label>District</label><br>
+						<input type="text" value="{{district}}" readonly>
+					</td>
+					<td>
+						<label>Pincode</label><br>
+						<input type="number" value="{{pincode}}" readonly>
+					</td>
+				</tr>
+
+
+			</table>
+		</div> 
+
+
+		<div id=educate2>
+			<h5>10th School Details / Equivaltent</h5><br>
+			<div class="row">
+			<div class="col-md-6">
+			<ul>
+				<li><strong>School Name&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{schlname10}}</li>
+				<li><strong>Max Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{maxmark10}}</li>
+				<li><strong>Act Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{actmark10}}</li>
+			</ul><br>
+			<h5>12th School Details / Equivalent</h5><br>
+			<ul>
+				<li><strong>School Name&nbsp;&nbsp;&nbsp;&nbsp;:</strong>{{schlname12}}</li>
+				<li><strong>Max Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{maxmark12}}</li>
+				<li><strong>Act Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{actmark12}}</li>
+			</ul><br>
+		   </div>
+		   <div class="col-md-6">
+			<h5>College Details</h5>
+			<ul>
+				<li><strong>College Name&nbsp;&nbsp;&nbsp;&nbsp;:</strong>{{clgname}}</li>
+				<li><strong>Stream&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{stream}}</li>
+				<li><strong>Branch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{branch}}</li>
+				<li><strong>Graduation Year:</strong>{{grayear}}</li>
+				<li><strong>Act Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{clgactmark}}</li>
+				<li><strong>Max Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{clgmaxmark}}</li>
+				<li><strong>Act Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{clgactmark}}</li>
+				<li><strong>Act Mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{clgactmark}}</li>
+			</ul><br>
+		</div>
+	</div>
+		</div>
+
+		<div id="extra">
+			<div class="row">
+				
+				<div class="col-md-8">
+			<h5>Skills<h5>
+			{{skills}}
+           
+			<br><br><br>
+			<table>
+				<tr>
+					<th>Content</th>
+					<th>Your Answer</th>
+				<tr>
+				<tr>
+					<td>Do you participated in Presentation?</td>
+					<td>{{q1}}</td>
+				</tr>
+				<tr>
+					<td>Do you have participated in any Hackathon?</td>
+					<td>{{q2}}</td>
+				</tr>
+				<tr>
+					<td>Do you have participated in Coding Challenge?</td>
+					<td>{{q3}}</td>
+				</tr>
+				<tr>
+					<td>Do you have won any Contest? </td>
+					<td>{{q4}}</td>
+				</tr><tr>
+					<td>How many prize you won from your college days?</td>
+					<td>{{q5}}</td>
+				</tr>
+			</table>
+			<br><Br><br>
+		</div>
+		<div class="col-md-4">
+			<H5>Experience</H5>
+			<ul>
+				<li><strong>Designation:{{designation}}</strong></li>
+				<li><strong>Experience Years:{{expyears}}</strong></li>
+			</ul>
+		</div>
+	</div>
+					</div>
+</body>
+</html>
+<footer>
+        <center>
+            Copyright @ Jobby 2022
+        </center>
+    </footer>
+</body>
+<style type="text/css">
+	#persondet2{
+		margin-left:160px;
+		margin-top: -70px;
+	}
+	 #educate2{
+	 	margin-left: 200px;
+	 }
+	#persondet2 ul li{
+		float:left;
+		margin-right:175px;
+		list-style-type: none;
+	}
+	#educate2 ul li{
+		list-style-type: none;
+		padding-bottom: 20px;
+	}
+	#extra{
+		margin-left: 300px;
+		margin-bottom: -220px;
+		list-style-type: none;
+	}
+    h4{
+    	pading-top: -100px;
+    	margin-left: 10px;
+    }
+    .bar{
+    	margin-left:-10px;
+    	margin-bottom: -80px;
+    }
+	.bar ul{
+		overflow: hidden;
+		float: left;
+		list-style-type: none;
+		margin-left: -12px;
+		background-color:#04aec4;
+		padding-bottom:480px;
+
+	}
+    .bar ul li{
+    	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    	cursor: pointer;
+    	color: white;
+    	font-size: 18px;
+    	margin-left: -12px;
+    	padding-top: 30px;
+    	padding-right: 12px;
+    }
+    #navli{
+    	text-decoration: none;
+    	color: white;
+    }
+    footer{
+    	margin-top:150px;
+    }
+    
+</style>
+
+
+<script type="text/javascript">
+var persondet2 = document.getElementById("persondet2");
+var educate = document.getElementById("educate2");
+var extra=document.getElementById("extra");
+var applied=document.getElementById("applied");
+persondet2.style.display = "";
+educate.style.display="none";
+extra.style.display="none";
+applied.style.display="none";
+
+function persondetFun2(){
+	persondet2.style.display = "";
+	educate.style.display="none";
+	extra.style.display="none";
+applied.style.display="none";
+
+}
+function educateFun2(){
+	persondet2.style.display = "none";
+	educate.style.display="";
+	extra.style.display="none";
+applied.style.display="none";
+
+}
+function extraFun3(){
+	persondet2.style.display = "none";
+	educate.style.display="none";
+	extra.style.display="";
+applied.style.display="none";
+	
+}
+function appliedFun4(){
+	persondet2.style.display = "none";
+	educate.style.display="none";
+	extra.style.display="none";
+	applied.style.display="";
+}
+</script>
+
+<style type="text/css">
+	table{
+		margin-top: -30px;
+		margin-left:20px;
+		border-collapse: separate;
+		border-spacing: 0 50px;
+	}
+	table tr td{
+		padding-left:100px;
+	}
+	
+</style>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OTP Verification</title>
+</head>
+<body>
+    <center>
+    <h1>Verify Gmail Your Mail Id"</h1>
+    <form action="/validate" method="post">
+        <h4> OTP has been sent to the email id. Please check the email for the confirmation.</h4>
+        Enter OTP(One-time password): <input type="text" name="otp"><br>
+        <p style="color:red;">{{error}}</p><br>
+        <input type="submit" value="Submit">
+    </form>
+    </center>
+</body>
+</html>
+
+<style type="text/css">
+    h1{
+        color: #04aec4;
+    }
+</style>
