@@ -1,4 +1,6 @@
 Flask
-
+ibm_db
+bcrypt
+flask_mail
 
 
